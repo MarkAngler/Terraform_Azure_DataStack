@@ -24,9 +24,11 @@ provider "azurerm" {
 
 
 # Use Azure CLI authentication.
-data "databricks_current_user" "me" {
-  depends_on = [azurerm_databricks_workspace.dbx]
-}
+# data "databricks_current_user" "me" {
+#   depends_on = [azurerm_databricks_workspace.dbx]
+# }
+
+
 provider "databricks" {
   host = azurerm_databricks_workspace.dbx.workspace_url
   
