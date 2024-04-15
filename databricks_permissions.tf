@@ -1,15 +1,15 @@
-resource "databricks_grants" "dbx_external_creds" {
-  storage_credential = databricks_storage_credential.dbx_storage_creds.id
+resource "databricks_grants" "grant_dbx_external_creds" {
+  storage_credential = databricks_storage_credential.stor_creds_dbx_acd.id
   grant {
     principal  = "DataEngineers"
-    privileges = ["CREATE_EXTERNAL_TABLE"]
+    privileges = ["ALL_PRIVILEGES"]
   }
 }
 
 
 
-resource "databricks_grants" "uc_we_d_sandbox" {
-  catalog = databricks_catalog.uc_we_d_sandbox.name
+resource "databricks_grants" "grant_uc_development" {
+  catalog = databricks_catalog.uc_development.name
   grant {
     principal  = "DataEngineers"
     privileges = ["ALL_PRIVILEGES"]
@@ -20,8 +20,8 @@ resource "databricks_grants" "uc_we_d_sandbox" {
 
 
 
-resource "databricks_grants" "dbx_ext_storage" {
-  external_location = databricks_external_location.dbx_ext_storage.id
+resource "databricks_grants" "grant_dbx_ext_storage" {
+  external_location = databricks_external_location.dbx_ext_storage_general.id
   grant {
     principal  = "DataEngineers"
     privileges = ["ALL_PRIVILEGES"]

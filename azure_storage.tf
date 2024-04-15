@@ -9,8 +9,14 @@ resource "azurerm_storage_account" "storageaccount" {
 }
 
 
-resource "azurerm_storage_container" "dbx_uc_eastus_metastore" {
-  name                  = "dbx_uc_${var.region}_metastore"
+resource "azurerm_storage_container" "container_dbx_uc_eastus_metastore" {
+  name                  = "dbx-uc-${var.region}-metastore"
+  storage_account_name  = azurerm_storage_account.storageaccount.name
+  container_access_type = "private"
+}
+
+resource "azurerm_storage_container" "container_datalake" {
+  name                  = "datalake-${var.region}"
   storage_account_name  = azurerm_storage_account.storageaccount.name
   container_access_type = "private"
 }

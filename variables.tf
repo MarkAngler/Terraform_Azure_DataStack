@@ -5,13 +5,13 @@ variable "environment" {
 
 variable "region" {
   type = string
-  default = "eastus"
+  default = "centralus"
 }
 
-variable "policy_job_compute" {
-  type    = string
-  default = "60632A6776000707"
-}
+# variable "policy_job_compute" {
+#   type    = string
+#   default = "60632A6776000707"
+# }
 
 
 variable "dltDevelopmentMode" {
