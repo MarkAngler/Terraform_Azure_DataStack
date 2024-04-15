@@ -3,6 +3,11 @@ variable "environment" {
   default = "d"
 }
 
+variable "region" {
+  type = string
+  default = "eastus"
+}
+
 variable "policy_job_compute" {
   type    = string
   default = "60632A6776000707"
@@ -24,10 +29,7 @@ variable "discordWebhookId" {
   default = ""
 }
 
-variable "region" {
-  type = string
-  default = "westeurope"
-}
+
 
 # variable "devops_client_id" {
 #   type        = string
