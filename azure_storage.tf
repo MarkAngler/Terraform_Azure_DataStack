@@ -20,3 +20,9 @@ resource "azurerm_storage_container" "container_datalake" {
   storage_account_name  = azurerm_storage_account.storageaccount.name
   container_access_type = "private"
 }
+
+resource "azurerm_role_assignment" "azure_role_storage" {
+  scope                = azurerm_storage_account.storageaccount.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = azurerm_databricks_access_connector.dbx_acd.identity[0].principal_id
+}
