@@ -11,7 +11,7 @@ resource "azurerm_databricks_access_connector" "dbx_acd" {
 resource "databricks_metastore" "uc_eastus_metastore" {
   name = "uc_${var.region}_metastore"
   storage_root = format("abfss://%s@%s.dfs.core.windows.net/",
-    azurerm_storage_container.unity_catalog.name,
+    azurerm_storage_container.dbx_uc_eastus_metastore.name,
     azurerm_storage_account.storageaccount.name)
   owner         = "DataEngineers"
   region        = azurerm_resource_group.rg.location
@@ -19,7 +19,7 @@ resource "databricks_metastore" "uc_eastus_metastore" {
 }
 
 resource "databricks_metastore_assignment" "dbx_metastore_assignment" {
-  metastore_id = databricks_metastore.this.id
+  metastore_id = databricks_metastore.uc_eastus_metastore.id
   workspace_id = azurerm_databricks_workspace.dbx.workspace_id
 }
 
