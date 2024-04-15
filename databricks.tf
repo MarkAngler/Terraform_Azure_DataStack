@@ -22,23 +22,13 @@ resource "azurerm_databricks_workspace" "dbx" {
   managed_resource_group_name = "${var.region}-${var.environment}-databricks-workspace-rg"
 }
 
-resource "databricks_cluster" "shared_autoscaling" {
-  cluster_name            = "${var.region}-${var.environment}-shared"
-  spark_version           = data.databricks_spark_version.latest_lts.id
-  node_type_id            = data.databricks_node_type.smallest.id
-  autotermination_minutes = 20
-  autoscale {
-    min_workers = 1
-    max_workers = 2
-  }
-  
-}
+
 
 resource "databricks_catalog" "uc_we_d_sandbox" {
   name    = "${var.region}_${var.environment}_sandbox"
-  comment = "this catalog is managed by terraform"
+  comment = ""
   properties = {
-    purpose = "dev sandbox"
+    purpose = "dev"
   }
   depends_on = [azurerm_databricks_workspace.dbx, databricks_metastore_assignment.dbx_metastore_assignment]
 }
