@@ -1,0 +1,1 @@
+.\terraform.exe init -backend-config="resource_group_name=rg-d-eastus" -backend-config="storage_account_name=storageaccountbieastusd"

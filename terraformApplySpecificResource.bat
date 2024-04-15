@@ -1,0 +1,1 @@
+.\terraform apply -target="databricks_pipeline"."DLT_DataMart_SMART_GD" -var-file="variables_dev.tfvars"
