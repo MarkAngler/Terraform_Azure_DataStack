@@ -1,0 +1,6 @@
+selected resource name:		Bulk Copy from Files to Database
+selected resource type:		pipeline
+factory name:			data-dfactory-us-d
+factory location:		westeurope
+subscription id:		476c957a-7e7a-4682-862c-0819ba3d71c6
+time of download (UTC):		Thu, 25 Apr 2024 13:45:07 GMT
