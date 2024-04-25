@@ -13,19 +13,17 @@ test_framework = TestFramework(
 pipeline = test_framework.get_pipeline_by_name("Bulk Copy from Files to Database")
 activity = pipeline.get_activity_by_name("Get Files")
 
-print(activity.output)
-
 state = PipelineRunState(
     parameters=[
-        RunParameter(RunParameterType.Global, "SourceContainer", "unittests-azuredatafactory"),
-        RunParameter(RunParameterType.Global, "SourceDirectory", "Bulk_Copy_from_Files_to_Database_source"),
+        RunParameter(RunParameterType.Pipeline, "SourceContainer", "unittests-azuredatafactory"),
+        RunParameter(RunParameterType.Pipeline, "SourceDirectory", "Bulk_Copy_from_Files_to_Database_source"),
     ])
     # variables=[
     #     PipelineRunVariable("JobName", "Job-123"),
     # ])
 
-# # Act
-# activity.evaluate(state)
+# Act
+activity.evaluate(state)
 
 # # Assert
-# assert "https://example.com/jobs" == activity.type_properties["url"].result
+assert "unittests-azuredatafactory" == activity.type_properties["dataset"]['parameters']['SourceContainer'].result
