@@ -6,10 +6,10 @@ import sys
 os.environ['PYSPARK_PYTHON'] = sys.executable
 os.environ['PYSPARK_DRIVER_PYTHON'] = sys.executable
 
-os.environ['SPARK_VERSION'] = '3.3'
 
 spark = (SparkSession
     .builder
+    .config("spark.driver.bindAddress", "localhost") \
     .config("spark.jars.packages", pydeequ.deequ_maven_coord)
     .config("spark.jars.excludes", pydeequ.f2j_maven_coord)
     .getOrCreate())
